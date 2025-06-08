@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Quote - Avida Medical Supplies</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h2><i class="fas fa-plus-circle"></i> Avida Medical Supplies</h2>
+            </div>
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="quote.html" class="active">Get Quote</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="quote-hero">
+        <div class="container">
+            <h1>Request a Quote</h1>
+            <p>Get competitive pricing for medical consumables, equipment, and bookings</p>
+        </div>
+    </section>
+
+    <!-- Quote Form Section -->
+    <section class="quote-section">
+        <div class="container">
+            <form class="quote-form" id="quoteForm">
+                <h2 style="color: var(--primary-blue); text-align: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-file-medical"></i> Quote Request Form
+                </h2>
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="organization">Organization/Hospital Name</label>
+                    <input type="text" id="organization" name="organization">
+                </div>
+
+                <div class="form-group">
+                    <label for="serviceType">Service Type *</label>
+                    <select id="serviceType" name="serviceType" required>
+                        <option value="">Select a service type</option>
+                        <option value="medical-consumables">Medical Consumables</option>
+                        <option value="medical-equipment">Medical Equipment</option>
+                        <option value="laboratory-supplies">Laboratory Supplies</option>
+                        <option value="bookings">Bookings</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="specificProducts">Specific Products/Services Needed</label>
+                    <textarea id="specificProducts" name="specificProducts" placeholder="Please list the specific products or services you need, including quantities if known..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="urgency">Urgency Level</label>
+                    <select id="urgency" name="urgency">
+                        <option value="">Select urgency level</option>
+                        <option value="urgent">Urgent (Within 24 hours)</option>
+                        <option value="asap">ASAP (Within 3 days)</option>
+                        <option value="standard">Standard (Within 1 week)</option>
+                        <option value="flexible">Flexible timeline</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="deliveryLocation">Delivery Location</label>
+                    <input type="text" id="deliveryLocation" name="deliveryLocation" placeholder="City, Region">
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalMessage">Additional Message</label>
+                    <textarea id="additionalMessage" name="additionalMessage" placeholder="Any additional information, special requirements, or questions..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Submit Quote Request
+                    </button>
+                </div>
+            </form>
+
+            <!-- Contact Information -->
+            <div style="text-align: center; margin-top: 2rem; padding: 2rem; background-color: var(--light-gray); border-radius: 10px;">
+                <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">
+                    <i class="fas fa-phone-alt"></i> Prefer to Call?
+                </h3>
+                <p>For immediate assistance or urgent requests, contact us directly:</p>
+                <div style="margin-top: 1rem;">
+                    <a href="tel:+237651743256" class="btn btn-secondary" style="margin-right: 1rem;">
+                        <i class="fas fa-phone"></i> Call +237 651743256
+                    </a>
+                    <a href="mailto:avidaenterprise@gmail.com" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Email Us
+                    </a>
+                </div>
+                <p style="margin-top: 1rem; color: var(--gray);">
+                    Business Hours: Monday - Saturday, 8:00 AM - 5:00 PM
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose-us">
+        <div class="container">
+            <h2>Why Request a Quote from Us?</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Competitive Pricing</h3>
+                    <p>We offer fair prices for top-quality medical supplies with transparent pricing structure.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Quick Response</h3>
+                    <p>We respond to all quote requests within 24 hours with detailed pricing and availability.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Quality Guarantee</h3>
+                    <p>All our products meet international medical standards and come with quality assurance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Avida Medical Supplies</h3>
+                    <p>Your trusted partner for medical supplies in Cameroon.</p>
+                    <p><strong>Convenient Supplies, Quality Products</strong></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Contact</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Mutengene, South West Cameroon</p>
+                    <p><i class="fas fa-phone"></i> +237 651743256</p>
+                    <p><i class="fas fa-envelope"></i> avidaenterprise@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Business Hours</h4>
+                    <p>Monday - Saturday</p>
+                    <p>8:00 AM - 5:00 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Avida Medical Supplies. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

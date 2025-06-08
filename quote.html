@@ -14,17 +14,21 @@
             <div class="logo">
                 <h2><i class="fas fa-plus-circle"></i> Avida Medical Supplies</h2>
             </div>
-            <nav class="nav">
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Navigation -->
+            <nav class="nav" id="main-nav">
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="products.html">Products</a></li>
-                    <li><a href="quote.html" class="active">Get Quote</a></li>
+                    <li><a href="quote.html">Get Quote</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
         </div>
     </header>
 
@@ -180,13 +184,17 @@
                     <p>Monday - Saturday</p>
                     <p>8:00 AM - 5:00 PM</p>
                 </div>
-                <div class="footer-section">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
+               <div class="footer-section" style="text-align: center;">
+    <h4 style="margin-bottom: 1rem; color: #60a5fa;">Follow Us</h4>
+    <div class="social-links" style="display: flex; justify-content: center; gap: 1rem;">
+        <a href="#" aria-label="Facebook" style="color: white; font-size: 1.5rem; transition: color 0.3s ease; text-decoration: none;">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="#" aria-label="LinkedIn" style="color: white; font-size: 1.5rem; transition: color 0.3s ease; text-decoration: none;">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </div>
+</div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Avida Medical Supplies. All rights reserved.</p>
@@ -194,6 +202,6 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

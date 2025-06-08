@@ -1,37 +1,49 @@
-// SIMPLE MOBILE MENU - NO COMPLEX CODE
-window.addEventListener('load', function() {
-    // Get the hamburger button and nav menu
-    const hamburger = document.querySelector('.mobile-menu-toggle');
-    const nav = document.querySelector('.nav');
+// Simple Mobile Menu - Clean and Working
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('mobile-toggle');
+    const nav = document.getElementById('main-nav');
     
     if (hamburger && nav) {
-        // When hamburger is clicked
-        hamburger.onclick = function() {
+        // Toggle menu when hamburger is clicked
+        hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            nav.classList.toggle('mobile-active');
+            
+            // Change icon
+            const icon = hamburger.querySelector('i');
             if (nav.classList.contains('mobile-active')) {
-                nav.classList.remove('mobile-active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                icon.className = 'fas fa-times';
             } else {
-                nav.classList.add('mobile-active');
-                hamburger.innerHTML = '<i class="fas fa-times"></i>';
+                icon.className = 'fas fa-bars';
             }
-        };
+        });
         
-        // Close menu when any link is clicked
-        const links = nav.querySelectorAll('a');
-        links.forEach(function(link) {
-            link.onclick = function() {
+        // Close menu when nav links are clicked
+        const navLinks = nav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
                 nav.classList.remove('mobile-active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-            };
+                hamburger.querySelector('i').className = 'fas fa-bars';
+            });
         });
         
         // Close menu when clicking outside
-        document.onclick = function(event) {
-            if (!hamburger.contains(event.target) && !nav.contains(event.target)) {
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
                 nav.classList.remove('mobile-active');
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                hamburger.querySelector('i').className = 'fas fa-bars';
             }
-        };
+        });
+        
+        // Close menu when window is resized to desktop
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                nav.classList.remove('mobile-active');
+                hamburger.querySelector('i').className = 'fas fa-bars';
+            }
+        });
     }
 });
 
@@ -258,40 +270,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Loading Animation for Forms
-function showLoading(button) {
-    const originalText = button.innerHTML;
-    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-    button.disabled = true;
-    
-    return function() {
-        button.innerHTML = originalText;
-        button.disabled = false;
-    };
-}
-
-// Product Search Functionality (for products page)
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('productSearch');
-    if (searchInput) {
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            const productItems = document.querySelectorAll('.product-item');
-            
-            productItems.forEach(item => {
-                const productName = item.querySelector('h3').textContent.toLowerCase();
-                const productDesc = item.querySelector('p').textContent.toLowerCase();
-                
-                if (productName.includes(searchTerm) || productDesc.includes(searchTerm)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    }
-});
-
 // Scroll to Top Functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Create scroll to top button
@@ -302,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background-color: var(--primary-blue);
+        background-color: #1e3a8a;
         color: white;
         border: none;
         border-radius: 50%;
@@ -348,15 +326,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Product Search Functionality (for products page)
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('productSearch');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const productItems = document.querySelectorAll('.product-item');
+            
+            productItems.forEach(item => {
+                const productName = item.querySelector('h3').textContent.toLowerCase();
+                const productDesc = item.querySelector('p').textContent.toLowerCase();
+                
+                if (productName.includes(searchTerm) || productDesc.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    }
+});
+
 // Analytics and Tracking (placeholder for future implementation)
 function trackEvent(eventName, eventData) {
     // Placeholder for analytics tracking
     console.log('Event tracked:', eventName, eventData);
-    
-    // Example: Google Analytics tracking
-    // if (typeof gtag !== 'undefined') {
-    //     gtag('event', eventName, eventData);
-    // }
 }
 
 // Track form submissions

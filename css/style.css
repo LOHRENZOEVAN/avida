@@ -59,10 +59,21 @@ body {
     margin-right: 0.5rem;
 }
 
+/* Navigation Styles */
+.nav {
+    display: block;
+}
+
 .nav-links {
     display: flex;
     list-style: none;
     gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    position: relative;
 }
 
 .nav-links a {
@@ -80,10 +91,32 @@ body {
     color: var(--white);
 }
 
+/* Mobile Menu Toggle Button */
 .mobile-menu-toggle {
     display: none;
-    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.8rem;
     cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+/* Contact Button */
+.contact-btn {
+    background: #f77f00;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.contact-btn:hover {
+    background: #e6720a;
 }
 
 /* Hero Section */
@@ -584,16 +617,23 @@ section {
     display: block;
 }
 
-/* Responsive Design */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
     .header .container {
         position: relative;
     }
 
+    /* Show mobile menu toggle button */
     .mobile-menu-toggle {
         display: block !important;
     }
 
+    /* Hide contact button on mobile */
+    .contact-btn {
+        display: none;
+    }
+
+    /* Hide navigation by default on mobile */
     .nav {
         display: none;
         position: absolute;
@@ -606,10 +646,12 @@ section {
         z-index: 999;
     }
 
+    /* Show navigation when mobile-active class is added */
     .nav.mobile-active {
         display: block !important;
     }
 
+    /* Stack navigation links vertically */
     .nav-links {
         flex-direction: column;
         gap: 0;
@@ -620,6 +662,7 @@ section {
     .nav-links li {
         width: 100%;
         border-bottom: 1px solid var(--dark-blue);
+        list-style: none;
     }
 
     .nav-links li:last-child {
@@ -634,6 +677,7 @@ section {
         color: var(--white);
         background: none;
         border-radius: 0;
+        text-decoration: none;
     }
 
     .nav-links a:hover,

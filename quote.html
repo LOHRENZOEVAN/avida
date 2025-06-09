@@ -19,9 +19,9 @@
             </button>
             <nav class="nav" id="main-nav">
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Products</a></li>
-                    <li><a href="quote.html">Get Quote</a></li>
+                    <li><a href="quote.html" class="active">Get Quote</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -39,7 +39,27 @@
     <!-- Quote Form Section -->
     <section class="quote-section">
         <div class="container">
+            <!-- Success Message Container (hidden by default) -->
+            <div id="quote-success" style="display: none; background-color: #10b981; color: white; padding: 2rem; border-radius: 10px; margin-bottom: 2rem; text-align: center; animation: fadeIn 0.5s ease-out;">
+                <i class="fas fa-check-circle" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+                <h3 style="margin-bottom: 1rem;">Quote Request Submitted Successfully!</h3>
+                <p style="margin-bottom: 1rem;">Thank you for choosing Avida Medical Supplies.</p>
+                <p style="margin-bottom: 1rem;"><strong>We will contact you within 24 hours during business hours.</strong></p>
+                <button onclick="hideSuccessMessage()" class="btn" style="background-color: white; color: #10b981; margin-right: 1rem;">
+                    <i class="fas fa-plus"></i> Submit Another Quote
+                </button>
+                <a href="tel:+237651743256" class="btn" style="background-color: rgba(255,255,255,0.2); color: white; text-decoration: none;">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+            </div>
+
             <form class="quote-form" id="quoteForm" action="https://formspree.io/f/xkgbjvbp" method="POST">
+                <!-- Formspree Configuration - NO REDIRECT -->
+                <input type="hidden" name="_subject" value="New Quote Request - Avida Medical Supplies">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <!-- REMOVE _next to prevent redirect -->
+                
                 <h2 style="color: var(--primary-blue); text-align: center; margin-bottom: 1.5rem;">
                     <i class="fas fa-file-medical"></i> Quote Request Form
                 </h2>
@@ -51,7 +71,8 @@
 
                 <div class="form-group">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="_replyto" required>
+                    <!-- Use _replyto so you can reply directly -->
                 </div>
 
                 <div class="form-group">
@@ -68,38 +89,38 @@
                     <label for="serviceType">Service Type *</label>
                     <select id="serviceType" name="serviceType" required>
                         <option value="">Select a service type</option>
-                        <option value="medical-consumables">Medical Consumables</option>
-                        <option value="medical-equipment">Medical Equipment</option>
-                        <option value="laboratory-supplies">Laboratory Supplies</option>
-                        <option value="bookings">Bookings</option>
-                        <option value="other">Other</option>
+                        <option value="Medical Consumables">Medical Consumables</option>
+                        <option value="Medical Equipment">Medical Equipment</option>
+                        <option value="Laboratory Supplies">Laboratory Supplies</option>
+                        <option value="Bookings">Bookings</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="specificProducts">Specific Products/Services Needed</label>
-                    <textarea id="specificProducts" name="specificProducts"></textarea>
+                    <textarea id="specificProducts" name="specificProducts" placeholder="Please list the specific medical supplies or equipment you need..."></textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="urgency">Urgency Level</label>
                     <select id="urgency" name="urgency">
                         <option value="">Select urgency level</option>
-                        <option value="urgent">Urgent (Within 24 hours)</option>
-                        <option value="asap">ASAP (Within 3 days)</option>
-                        <option value="standard">Standard (Within 1 week)</option>
-                        <option value="flexible">Flexible timeline</option>
+                        <option value="Urgent (Within 24 hours)">Urgent (Within 24 hours)</option>
+                        <option value="ASAP (Within 3 days)">ASAP (Within 3 days)</option>
+                        <option value="Standard (Within 1 week)">Standard (Within 1 week)</option>
+                        <option value="Flexible timeline">Flexible timeline</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="deliveryLocation">Delivery Location</label>
-                    <input type="text" id="deliveryLocation" name="deliveryLocation">
+                    <input type="text" id="deliveryLocation" name="deliveryLocation" placeholder="City/Town in Cameroon">
                 </div>
 
                 <div class="form-group">
                     <label for="additionalMessage">Additional Message</label>
-                    <textarea id="additionalMessage" name="additionalMessage"></textarea>
+                    <textarea id="additionalMessage" name="additionalMessage" placeholder="Any special requirements or additional information..."></textarea>
                 </div>
 
                 <div class="form-group">
@@ -197,6 +218,78 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Keep your existing script.js -->
+    <script src="js/script.js"></script>
+    
+    <!-- Additional JavaScript to override the redirect and show success message -->
+    <script>
+        // Override the default form submission to show inline success instead of redirect
+        document.addEventListener('DOMContentLoaded', function() {
+            const quoteForm = document.getElementById('quoteForm');
+            
+            if (quoteForm) {
+                // Add event listener that runs AFTER your script.js validation
+                quoteForm.addEventListener('submit', function(e) {
+                    // Let your script.js handle validation first
+                    // If validation passes, this will run
+                    
+                    // Small delay to let your validation run first
+                    setTimeout(() => {
+                        // If form is still visible (meaning validation passed), show success
+                        if (quoteForm.style.display !== 'none') {
+                            // Show success message after form submits
+                            setTimeout(() => {
+                                showInlineSuccess();
+                            }, 1000); // Give time for form to submit
+                        }
+                    }, 100);
+                });
+            }
+        });
+        
+        function showInlineSuccess() {
+            // Hide the form temporarily
+            document.getElementById('quoteForm').style.display = 'none';
+            
+            // Show success message
+            const successDiv = document.getElementById('quote-success');
+            successDiv.style.display = 'block';
+            
+            // Scroll to success message
+            successDiv.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Auto-hide after 5 seconds and reset form
+            setTimeout(() => {
+                hideSuccessMessage();
+            }, 5000);
+        }
+        
+        function hideSuccessMessage() {
+            // Hide success message
+            document.getElementById('quote-success').style.display = 'none';
+            
+            // Show form again and reset it
+            const form = document.getElementById('quoteForm');
+            form.style.display = 'block';
+            form.reset(); // Clear all fields
+            
+            // Scroll back to form
+            form.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    </script>
+    
+    <!-- Add CSS for animation -->
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </body>
 </html>

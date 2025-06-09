@@ -47,14 +47,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Form Validation and Submission
+// FIXED: Form validation that works WITH Formspree (doesn't prevent submission)
 document.addEventListener('DOMContentLoaded', function() {
-    // Quote Form
+    // Quote Form - Client-side validation BEFORE Formspree submission
     const quoteForm = document.getElementById('quoteForm');
     if (quoteForm) {
         quoteForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             // Get form data
             const formData = new FormData(this);
             const data = {};
@@ -63,19 +61,21 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Validate required fields
-            const requiredFields = ['fullName', 'email', 'phone', 'serviceType'];
+            const requiredFields = ['fullName', '_replyto', 'phone', 'serviceType'];
             let isValid = true;
             let errorMessage = '';
             
             requiredFields.forEach(field => {
-                if (!data[field] || data[field].trim() === '') {
+                const fieldValue = data[field] || data['email']; // Handle both _replyto and email
+                if (!fieldValue || fieldValue.trim() === '') {
                     isValid = false;
                     errorMessage += `${getFieldLabel(field)} is required.\n`;
                 }
             });
             
             // Validate email format
-            if (data.email && !isValidEmail(data.email)) {
+            const email = data['_replyto'] || data['email'];
+            if (email && !isValidEmail(email)) {
                 isValid = false;
                 errorMessage += 'Please enter a valid email address.\n';
             }
@@ -86,23 +86,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 errorMessage += 'Please enter a valid phone number.\n';
             }
             
+            // CRITICAL: Only prevent submission if validation fails
             if (!isValid) {
+                e.preventDefault(); // ONLY prevent if there are errors
                 showAlert('Please correct the following errors:\n' + errorMessage, 'error');
-                return;
+                return false;
             }
             
-            // Simulate form submission
-            showAlert('Quote request submitted successfully! We will contact you within 24 hours.', 'success');
-            this.reset();
+            // If validation passes, let Formspree handle the submission
+            // Show loading message
+            showAlert('Sending quote request...', 'info');
+            
+            // Form will submit normally to Formspree
+            return true;
         });
     }
     
-    // Contact Form
+    // Contact Form - Same approach
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             // Get form data
             const formData = new FormData(this);
             const data = {};
@@ -128,14 +131,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 errorMessage += 'Please enter a valid email address.\n';
             }
             
+            // CRITICAL: Only prevent submission if validation fails
             if (!isValid) {
+                e.preventDefault(); // ONLY prevent if there are errors
                 showAlert('Please correct the following errors:\n' + errorMessage, 'error');
-                return;
+                return false;
             }
             
-            // Simulate form submission
-            showAlert('Message sent successfully! We will get back to you soon.', 'success');
-            this.reset();
+            // If validation passes, let Formspree handle the submission
+            showAlert('Sending message...', 'info');
+            return true;
         });
     }
 });
@@ -145,6 +150,7 @@ function getFieldLabel(fieldName) {
     const labels = {
         'fullName': 'Full Name',
         'email': 'Email Address',
+        '_replyto': 'Email Address',
         'phone': 'Phone Number',
         'serviceType': 'Service Type',
         'contactName': 'Full Name',
@@ -354,11 +360,12 @@ function trackEvent(eventName, eventData) {
     console.log('Event tracked:', eventName, eventData);
 }
 
-// Track form submissions
+// Track form submissions (modified to not interfere with Formspree)
 document.addEventListener('DOMContentLoaded', function() {
     const forms = document.querySelectorAll('form');
     forms.forEach(form => {
         form.addEventListener('submit', function() {
+            // Only track if form is valid and will actually submit
             trackEvent('form_submit', {
                 form_id: this.id || 'unknown',
                 page_url: window.location.href

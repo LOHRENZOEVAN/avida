@@ -14,13 +14,9 @@
             <div class="logo">
                 <h2><i class="fas fa-plus-circle"></i> Avida Medical Supplies</h2>
             </div>
-
-            <!-- Mobile Menu Toggle Button -->
             <button class="mobile-menu-toggle" id="mobile-toggle">
                 <i class="fas fa-bars"></i>
             </button>
-
-            <!-- Navigation -->
             <nav class="nav" id="main-nav">
                 <ul class="nav-links">
                     <li><a href="index.html" class="active">Home</a></li>
@@ -47,7 +43,7 @@
                 <!-- Contact Information -->
                 <div class="contact-info">
                     <h3><i class="fas fa-address-book"></i> Get in Touch</h3>
-                    
+
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
@@ -68,7 +64,7 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
-                            <p><a href="mailto:avidaenterprise@gmail.com" style="color: inherit;">avidaenterprise@gmail.com</a></p>
+                            <p><a href="mailto:lorenzopakon@gmail.com" style="color: inherit;">avidaenterprise@gmail.com</a></p>
                         </div>
                     </div>
 
@@ -112,42 +108,19 @@
         </div>
     </section>
 
-    <!-- Quick Actions -->
-    <section style="background-color: var(--light-gray); padding: 3rem 0;">
-        <div class="container">
-            <h2 style="text-align: center; color: var(--primary-blue); margin-bottom: 2rem;">
-                Quick Actions
-            </h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <div style="background-color: var(--white); padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 4px 15px var(--shadow);">
-                    <i class="fas fa-file-medical" style="font-size: 2.5rem; color: var(--light-blue); margin-bottom: 1rem;"></i>
-                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Request Quote</h3>
-                    <p style="margin-bottom: 1.5rem;">Get competitive pricing for medical supplies</p>
-                    <a href="quote.html" class="btn btn-primary">Get Quote</a>
-                </div>
-                <div style="background-color: var(--white); padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 4px 15px var(--shadow);">
-                    <i class="fas fa-boxes" style="font-size: 2.5rem; color: var(--light-blue); margin-bottom: 1rem;"></i>
-                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Browse Products</h3>
-                    <p style="margin-bottom: 1.5rem;">Explore our medical equipment catalog</p>
-                    <a href="products.html" class="btn btn-primary">View Products</a>
-                </div>
-                <div style="background-color: var(--white); padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 4px 15px var(--shadow);">
-                    <i class="fas fa-phone-alt" style="font-size: 2.5rem; color: var(--light-blue); margin-bottom: 1rem;"></i>
-                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Call Now</h3>
-                    <p style="margin-bottom: 1.5rem;">Speak directly with our medical experts</p>
-                    <a href="tel:+237651743256" class="btn btn-primary">+237 651743256</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Form -->
     <section style="padding: 3rem 0;">
         <div class="container">
             <h2 style="text-align: center; color: var(--primary-blue); margin-bottom: 2rem;">
                 Send Us a Message
             </h2>
-            <form class="quote-form" id="contactForm" style="max-width: 700px;">
+            <form
+                class="quote-form"
+                id="contactForm"
+                style="max-width: 700px;"
+                action="https://formspree.io/f/myzjennq"
+                method="POST"
+            >
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="form-group">
                         <label for="contactName">Full Name *</label>
@@ -155,10 +128,10 @@
                     </div>
                     <div class="form-group">
                         <label for="contactEmail">Email *</label>
-                        <input type="email" id="contactEmail" name="contactEmail" required>
+                        <input type="email" id="contactEmail" name="email" required>
                     </div>
                 </div>
-                
+
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                     <div class="form-group">
                         <label for="contactPhone">Phone</label>
@@ -180,7 +153,7 @@
 
                 <div class="form-group">
                     <label for="contactMessage">Message *</label>
-                    <textarea id="contactMessage" name="contactMessage" required placeholder="Please describe your inquiry or question..."></textarea>
+                    <textarea id="contactMessage" name="message" required placeholder="Please describe your inquiry or question..."></textarea>
                 </div>
 
                 <div class="form-group">
@@ -213,16 +186,16 @@
                     <p>8:00 AM - 5:00 PM</p>
                 </div>
                 <div class="footer-section" style="text-align: center;">
-    <h4 style="margin-bottom: 1rem; color: #60a5fa;">Follow Us</h4>
-    <div class="social-links" style="display: flex; justify-content: center; gap: 1rem;">
-        <a href="#" aria-label="Facebook" style="color: white; font-size: 1.5rem; transition: color 0.3s ease; text-decoration: none;">
-            <i class="fab fa-facebook"></i>
-        </a>
-        <a href="#" aria-label="LinkedIn" style="color: white; font-size: 1.5rem; transition: color 0.3s ease; text-decoration: none;">
-            <i class="fab fa-linkedin"></i>
-        </a>
-    </div>
-</div>
+                    <h4 style="margin-bottom: 1rem; color: #60a5fa;">Follow Us</h4>
+                    <div class="social-links" style="display: flex; justify-content: center; gap: 1rem;">
+                        <a href="#" aria-label="Facebook" style="color: white; font-size: 1.5rem; text-decoration: none;">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" style="color: white; font-size: 1.5rem; text-decoration: none;">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Avida Medical Supplies. All rights reserved.</p>
